@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: orange;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid grey;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid grey;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 60%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+  background-color: #9933cc;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+</style>
+</head>
+<body>
+
+<div class="row">
+  
+
+  
+  <div class="col-12 col-s-12">
+    <div class="aside">
+      <h2>Profil Perusahaan</h2><br>
+Berawal di tahun 2015, PT Mitra Amertha Sejahtera mulai memasarkan dan mendistribusikan MEVAL, sebuah brand global untuk produk lighting & electrical equipment yang berasal dari Singapura.
+
+Dimulai dari area distribusi di Pulau Jawa, saat ini MEVAL sudah terdistribusi secara merata ke seluruh penjuru nusantara dan relatif mudah ditemui di toko toko yang menjual produk kelistrikan dan bahan bangunan.
+    </div>
+  </div>
+
+  <div class="col-12 col-s-12">
+    <div class="aside">
+      <h2>Kunci keberhasilan</h2>
+      <p>Kunci keberhasilan kami adalah KOMITMEN pada kualitas produk dengan harga terjangkau, serta KONSITENSI pada pemberian layanan yang prima pada seluruh mitra usaha dan pelanggan kami.</p>
+      
+    </div>
+  </div>
+</div>
+
+<div class="col-6 col-s-12">
+    <div class="aside">
+     
+      <h2>VISI</h2>
+      <p>Menjadikan MEVAL sebagai merek pilihan di kawasan Asia Tenggara untuk produk pencahayaan dan alat alat listrik</p>
+      
+    </div>
+  </div>
+</div>
+
+<div class="col-6 col-s-12">
+    <div class="aside">
+     
+    
+      <h2>MISI</h2>
+      <p>Memberi solusi berkualitas untuk kebutuhan pencahayaan dan alat listrik kepada pelanggan dengan harga terjangkau di Indonesia.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="col-12 col-s-12">
+    <div class="aside">
+      <div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2 >INTEGRITAS</h2>
+      <p>Trust &amp; Honesty.<br>Open Communication.<br>Responsible &amp; Accountable.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+    
+      <h2 >TOTALITAS</h2>
+<p>
+Cherish.<br>
+Sense Of Belonging.<br>
+Positive Attitude.
+</p>	
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+    
+     <h2 >KOMITMEN</h2>
+<p>
+Never Give up.<br>
+Ready to pay the price.<br>
+Active & always detail.<br>
+</p>	
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+    
+     <h2 >KETELADANAN</h2>
+<p>
+Leading by Example.<br>
+Leader Eat last.				
+</p>	
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+    
+      <h2 >PERBAIKAN BERKELANJUTAN</h2>
+<p>
+Never stop learning.<br>
+Grow or Gone.<br>
+Aim for customer excellence.
+</p>
+ </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+
+<h2 >KEPUASAAN PELANGGAN</h2>
+<p>
+Make Customer Happy.<br>
+Be Outstanding.<br>
+Customer Obsession.
+</p>
+
+</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="footer">
+<h2>MEVAL</h2>
+  
+</div>
+</div>
+</div>
+
+</body>
+</html>
